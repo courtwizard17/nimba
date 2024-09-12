@@ -9,7 +9,7 @@ end;
 const
   BREAKAFTER  = 60;
   BREAKFOR    = 6;
-  FOODAMOUNT  = 4;
+  FOODAMOUNT  = 20;
   FOODNAME    = 'Bass';
 
   BIRDHOUSES  = True;
@@ -232,8 +232,8 @@ begin
   if Pouches < 5 then
     Exit();
 
-  if Pouches < 10 then
-    if SRL.Dice(10) then
+  if Pouches < 20 then
+    if SRL.Dice(95) then
       Exit();
 
   Inventory.ClickItem(Item);
@@ -259,9 +259,6 @@ begin
   if InactivityTimer.ElapsedTime() > 300000 then
     TerminateScript('No XP gained in 5 minutes.');
 
-  if InactivityTimer.ElapsedTime() > 30000 then
-    Antiban.RandomRotate();
-
   if ReportTimer.ElapsedTime() > 120000 then
     PrintProgress();
 
@@ -272,11 +269,17 @@ begin
   HandlePouches();
 
   if ((Inventory.CountEmptySlots() < 2) or (Inventory.CountItem(Food) = 0)) then
-    Restock()
-  else
-    Pickpocket();
+  begin
+    Restock();
+    Exit();
+  end;
 
-  WaitEx(175, 170);
+  if InactivityTimer.ElapsedTime() > 30000 then
+    Antiban.RandomRotate();
+
+  Pickpocket();
+
+  WaitEx(50, 45);
 end;
 
 function TBirdHouseInclude.OnStart(): Boolean; override;
