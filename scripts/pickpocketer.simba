@@ -13,7 +13,7 @@ const
   FOODNAME    = 'Bass';
 
   BIRDHOUSES  = True;
-  INTERVAL    = 30 * ONE_MINUTE;
+  INTERVAL    = 40 * ONE_MINUTE;
   SEED        = 'Potato';
 
 var
@@ -78,10 +78,10 @@ end;
 
 procedure SetupAntiban();
 begin
-  Antiban.AddTask(ONE_MINUTE  * 4,   @Antiban.RandomRightClick, 1);
-  Antiban.AddTask(ONE_SECOND  * 45,  @Antiban.SmallRandomMouse, 1);
-  Antiban.AddTask(ONE_MINUTE  * 5,  @Antiban.RandomRotate, 1);
-  Antiban.AddTask(ONE_MINUTE  * 4,   @Antiban.DoLoseFocus, 1);
+  Antiban.AddTask(ONE_MINUTE  * 4, @Antiban.RandomRightClick, 1);
+  Antiban.AddTask(ONE_MINUTE  * 2, @Antiban.RandomMouse, 1);
+  Antiban.AddTask(ONE_MINUTE  * 5, @Antiban.RandomRotate, 1);
+  Antiban.AddTask(ONE_MINUTE  * 4, @Antiban.DoLoseFocus, 1);
 
   Antiban.AddBreak(ONE_MINUTE * 6, ONE_SECOND * 5, 1, 0);
   Antiban.AddBreak(BREAKAFTER * ONE_MINUTE, BREAKFOR * ONE_MINUTE, 0.3, 1);
