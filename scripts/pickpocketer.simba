@@ -1,15 +1,15 @@
 program pickpocketer;
 {$I WaspLib/osr.simba}
-{$I BirdhouseInclude.simba}
+{$I chores.simba}
 
 begin
   Login.PlayerIndex := 0;
 end;
 
 const
-  BREAKAFTER  = 60;
-  BREAKFOR    = 6;
-  FOODAMOUNT  = 20;
+  BREAKAFTER  = 45;
+  BREAKFOR    = 5;
+  FOODAMOUNT  = 12;
   FOODNAME    = 'Bass';
 
   BIRDHOUSES  = True;
@@ -279,7 +279,7 @@ begin
 
   Pickpocket();
 
-  WaitEx(50, 45);
+  WaitEx(500, 450);
 end;
 
 function TBirdHouseInclude.OnStart(): Boolean; override;
